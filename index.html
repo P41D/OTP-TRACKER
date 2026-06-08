@@ -37,8 +37,6 @@
   </footer>
 
 
-
-
 <script>
     // Define brand name and domain
     var brandname = "ELORAHUB ❤️";
@@ -56,8 +54,11 @@
     document.addEventListener("DOMContentLoaded", function() {
       var iframe = document.getElementById("myIframe");
       var spinner = document.getElementById("spinnerContainer");
+      
+      // FIX: Automatically get the current year and put it in the footer
+      document.getElementById("year").innerText = new Date().getFullYear();
 
-      // 1. Tell the browser what to do WHEN the iframe finishes loading
+      // Tell the browser what to do WHEN the iframe finishes loading
       iframe.addEventListener("load", function() {
         // Hide the loading spinner
         spinner.style.display = "none"; 
@@ -68,9 +69,8 @@
         }
       });
 
-      // 2. Push the URL into the iframe to trigger the loading process
+      // Push the URL into the iframe to trigger the loading process
       iframe.src = appScriptURL;
     });
   </script>
-
 </html>
