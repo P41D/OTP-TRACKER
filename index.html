@@ -37,23 +37,28 @@
   </footer>
 
 
-  <script>
+
+
+<script>
     // Define brand name and domain
     var brandname = "ELORAHUB ❤️";
     var maindomain = "ELORAHUB";
     var appScript = "https://script.google.com/macros/s/AKfycbxsHlkq4mEBCgsiAXHayw7IjH2bBfwhk0HkRk7irfkYlO_a51PjoHsENVp7I0OyzqvW7w/exec";
     var footer = "block"; //CHANGE BLOCK TO none TO HIDE THE FOOTER
 
+    // YOUR FUNCTION (Kept exactly as requested)
     function modifyAppScriptURL() {
       var modifiedURL = appScript.replace("https://script.google.com/", "https://script.google.com/a/*/");
       return modifiedURL;
     }
+    
+    // Generate the modified URL
     var appScriptURL = modifyAppScriptURL();
+
+    // THE FIX: Wait for the page to load, then push the modified URL into the iframe
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById("myIframe").src = appScriptURL;
+    });
   </script>
-  <script src="script.js"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
 
 </html>
