@@ -43,21 +43,33 @@
     // Define brand name and domain
     var brandname = "ELORAHUB ❤️";
     var maindomain = "ELORAHUB";
-    var appScript = "https://script.google.com/macros/s/AKfycbzzpD6nrHAjM_X64mZNlExJvZf_qV0Rov4s3t_Kvhou5V08Pp2DL5kPCLmt0Pzsva2WrQ/exec";
+    var appScript = "https://script.google.com/macros/s/AKfycbwYvgIJuCVf_lrdbP1qprB3v0qnCCZQA1SnJXLmchGzX7qA9wbcS2Ghurw1eOXPwIiN0w/exec";
     var footer = "block"; //CHANGE BLOCK TO none TO HIDE THE FOOTER
 
-    // YOUR FUNCTION (Kept exactly as requested)
     function modifyAppScriptURL() {
       var modifiedURL = appScript.replace("https://script.google.com/", "https://script.google.com/a/*/");
       return modifiedURL;
     }
     
-    // Generate the modified URL
     var appScriptURL = modifyAppScriptURL();
 
-    // THE FIX: Wait for the page to load, then push the modified URL into the iframe
     document.addEventListener("DOMContentLoaded", function() {
-      document.getElementById("myIframe").src = appScriptURL;
+      var iframe = document.getElementById("myIframe");
+      var spinner = document.getElementById("spinnerContainer");
+
+      // 1. Tell the browser what to do WHEN the iframe finishes loading
+      iframe.addEventListener("load", function() {
+        // Hide the loading spinner
+        spinner.style.display = "none"; 
+        
+        // Show the footer only after the app has loaded
+        if (footer === "block") {
+          document.getElementById("footer").style.display = "block";
+        }
+      });
+
+      // 2. Push the URL into the iframe to trigger the loading process
+      iframe.src = appScriptURL;
     });
   </script>
 
